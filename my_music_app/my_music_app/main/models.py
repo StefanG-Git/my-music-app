@@ -7,4 +7,9 @@ class Profile(models.Model):
 
     username = models.CharField(
         max_length=MAX_USERNAME_LENGTH,
+        null=False,
+    )
+
+    email = models.EmailField(
+        null=False,
     )

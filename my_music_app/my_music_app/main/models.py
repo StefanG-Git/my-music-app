@@ -1,4 +1,4 @@
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 
 
@@ -12,10 +12,16 @@ class Profile(models.Model):
         validators=[
             MinLengthValidator(MIN_USERNAME_LENGTH),
         ]
-
-
     )
 
     email = models.EmailField(
         null=False,
+    )
+
+    age = models.IntegerField(
+        null=True,
+        blank=True,
+        validators=[
+            MinValueValidator(0),
+        ]
     )

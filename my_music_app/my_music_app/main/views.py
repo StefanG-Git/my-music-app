@@ -10,5 +10,21 @@ def add_album(request):
     pass
 
 
-def album_details(request, pk):
+def show_album_details(request, pk):
+    pass
+
+
+def edit_album(request, pk):
+    pass
+
+
+def delete_album(request, pk):
+    pass
+
+
+def show_profile_details(request):
+    pass
+
+
+def delete_profile(request):
     pass

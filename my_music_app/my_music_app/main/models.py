@@ -8,15 +8,12 @@ class Profile(models.Model):
 
     username = models.CharField(
         max_length=MAX_USERNAME_LENGTH,
-        null=False,
         validators=[
             MinLengthValidator(MIN_USERNAME_LENGTH),
         ]
     )
 
-    email = models.EmailField(
-        null=False,
-    )
+    email = models.EmailField()
 
     age = models.PositiveIntegerField(
         null=True,

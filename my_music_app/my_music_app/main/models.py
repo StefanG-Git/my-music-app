@@ -31,7 +31,7 @@ class Album(models.Model):
     MUSIC_GENRES = (
         'Pop Music',
         'Jazz Music',
-        'R & B Music',
+        'R&B Music',
         'Rock Music',
         'Country Music',
         'Dance Music',

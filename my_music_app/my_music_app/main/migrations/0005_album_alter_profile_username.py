@@ -2,7 +2,6 @@
 
 import django.core.validators
 from django.db import migrations, models
-import my_music_app.main.validators
 
 
 class Migration(migrations.Migration):
@@ -27,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='profile',
             name='username',
-            field=models.CharField(max_length=15, validators=[django.core.validators.MinLengthValidator(2), my_music_app.main.validators.validate_only_letters_and_underscore]),
+            field=models.CharField(max_length=15, validators=[django.core.validators.MinLengthValidator(2), ]),
         ),
     ]

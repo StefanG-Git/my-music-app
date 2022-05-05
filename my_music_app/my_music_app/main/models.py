@@ -9,10 +9,10 @@ class Profile(models.Model):
 
     username = models.CharField(
         max_length=USERNAME_MAX_LENGTH,
-        validators=[
+        validators=(
             MinLengthValidator(USERNAME_MIN_LENGTH),
             RegexValidator(r'^\w+$', INVALID_USERNAME_MESSAGE),
-        ],
+        ),
     )
 
     email = models.EmailField()
@@ -24,9 +24,9 @@ class Profile(models.Model):
 
 
 class Album(models.Model):
-    ALBUM_NAME_MAX_LENGTH = 30
-    ARTIST_MAX_LENGTH = 30
-    GENRE_MAX_LENGTH = 30
+    NAME_MAX_LENGTH = 30
+    ARTIST_NAME_MAX_LENGTH = 30
+    GENRE_TYPE_MAX_LENGTH = 30
 
     MUSIC_GENRES = (
         'Pop Music',
@@ -39,17 +39,17 @@ class Album(models.Model):
         'Other',
     )
 
-    album_name = models.CharField(
-        max_length=ALBUM_NAME_MAX_LENGTH,
+    name = models.CharField(
+        max_length=NAME_MAX_LENGTH,
         unique=True,
     )
 
     artist = models.CharField(
-        max_length=ARTIST_MAX_LENGTH,
+        max_length=ARTIST_NAME_MAX_LENGTH,
     )
 
     genre = models.CharField(
-        max_length=GENRE_MAX_LENGTH,
+        max_length=GENRE_TYPE_MAX_LENGTH,
         choices=[(g, g) for g in MUSIC_GENRES],
     )
 
@@ -61,7 +61,7 @@ class Album(models.Model):
     image_url = models.URLField()
 
     price = models.FloatField(
-        validators=[
-            MinValueValidator(0.0)
-        ]
+        validators=(
+            MinValueValidator(0.0),
+        ),
     )

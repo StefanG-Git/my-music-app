@@ -10,4 +10,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('album_name', 'artist', 'genre', 'description', 'price')
+    list_display = ('name', 'artist', 'genre', 'description', 'price')

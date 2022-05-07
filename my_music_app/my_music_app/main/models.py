@@ -6,12 +6,13 @@ class Profile(models.Model):
     USERNAME_MIN_LENGTH = 2
     USERNAME_MAX_LENGTH = 15
     INVALID_USERNAME_MESSAGE = 'Ensure this value contains only letters, numbers, and underscore.'
+    USERNAME_PATTERN = r'^\w+$'
 
     username = models.CharField(
         max_length=USERNAME_MAX_LENGTH,
         validators=(
             MinLengthValidator(USERNAME_MIN_LENGTH),
-            RegexValidator(r'^\w+$', INVALID_USERNAME_MESSAGE),
+            RegexValidator(USERNAME_PATTERN, INVALID_USERNAME_MESSAGE),
         ),
     )
 
@@ -27,6 +28,7 @@ class Album(models.Model):
     NAME_MAX_LENGTH = 30
     ARTIST_NAME_MAX_LENGTH = 30
     GENRE_TYPE_MAX_LENGTH = 30
+    PRICE_MIN_VALUE = 0
 
     MUSIC_GENRES = (
         'Pop Music',
@@ -62,6 +64,6 @@ class Album(models.Model):
 
     price = models.FloatField(
         validators=(
-            MinValueValidator(0.0),
+            MinValueValidator(PRICE_MIN_VALUE),
         ),
     )

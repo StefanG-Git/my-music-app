@@ -1,5 +1,6 @@
-<!--Edit Page-->
-<section class="editPage">
+{% extends 'base.html' %}
+{% block page_content %}
+    <section class="editPage">
     <form>
         <fieldset>
             <legend>Delete Album</legend>
@@ -34,4 +35,5 @@
             </div>
         </fieldset>
     </form>
-</section>
+    </section>
+{% endblock %}

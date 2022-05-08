@@ -1,9 +1,26 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+
+from my_music_app.main.models import Profile, Album
+
+
+def get_profile():
+    profiles = Profile.objects.all()
+    if profiles:
+        return profiles[0]
+
+    return None
 
 
 def show_home(request):
-    return render(request, 'home-no-profile.html')
+    profile = get_profile()
+    if not profile:
+        return render(request, 'home-no-profile.html')
+
+    context = {
+        'profile': profile,
+        'albums': Album.objects.all(),
+    }
+    return render(request, 'home-with-profile.html', context)
 
 
 def add_album(request):

@@ -20,7 +20,7 @@ def show_home(request):
         'profile': profile,
         'albums': Album.objects.all(),
     }
-    
+
     return render(request, 'home-with-profile.html', context)
 
 

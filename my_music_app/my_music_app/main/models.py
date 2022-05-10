@@ -5,8 +5,8 @@ from django.db import models
 class Profile(models.Model):
     USERNAME_MIN_LENGTH = 2
     USERNAME_MAX_LENGTH = 15
-    INVALID_USERNAME_MESSAGE = 'Ensure this value contains only letters, numbers, and underscore.'
     USERNAME_PATTERN = r'^\w+$'
+    INVALID_USERNAME_MESSAGE = 'Ensure this value contains only letters, numbers, and underscore.'
 
     username = models.CharField(
         max_length=USERNAME_MAX_LENGTH,

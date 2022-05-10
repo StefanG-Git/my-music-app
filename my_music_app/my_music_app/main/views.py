@@ -25,7 +25,7 @@ def show_home(request):
 
 
 def add_album(request):
-    pass
+    return render(request, 'add-album.html')
 
 
 def show_album_details(request, pk):
@@ -41,8 +41,14 @@ def delete_album(request, pk):
 
 
 def show_profile_details(request):
-    pass
+    albums_count = len(Album.objects.all())
+    context = {
+        'profile': get_profile(),
+        'albums_count': albums_count,
+    }
+
+    return render(request, 'profile-details.html', context)
 
 
 def delete_profile(request):
-    pass
+    return render(request, 'profile-delete.html')

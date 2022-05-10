@@ -2,6 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -89,8 +90,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
+STATICFILES_DIRS = (
+    BASE_DIR / 'staticfiles',
+)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

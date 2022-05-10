@@ -14,7 +14,7 @@ def get_profile():
 def show_home(request):
     profile = get_profile()
     if not profile:
-        return redirect(create_profile)
+        return redirect('create profile')
 
     context = {
         'profile': profile,

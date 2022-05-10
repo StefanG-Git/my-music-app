@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from my_music_app.main.models import Profile, Album
 
@@ -14,7 +14,7 @@ def get_profile():
 def show_home(request):
     profile = get_profile()
     if not profile:
-        return render(request, 'home-no-profile.html')
+        return redirect(create_profile)
 
     context = {
         'profile': profile,
@@ -52,3 +52,7 @@ def show_profile_details(request):
 
 def delete_profile(request):
     return render(request, 'profile-delete.html')
+
+
+def create_profile(request):
+    return render(request, 'home-no-profile.html')

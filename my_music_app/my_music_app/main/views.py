@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from my_music_app.main.forms import CreateProfileForm, AddAlbumForm, EditAlbumForm, DeleteAlbumForm, DeleteProfileForm
 from my_music_app.main.models import Profile, Album
 
 
@@ -25,25 +26,88 @@ def show_home(request):
 
 
 def add_album(request):
-    return render(request, 'add-album.html')
+    if request.method == 'POST':
+        form = AddAlbumForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show home')
+    else:
+        form = AddAlbumForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'add-album.html', context)
 
 
 def show_album_details(request, pk):
-    pass
+    album = Album.objects.get(pk=pk)
+    context = {
+        'album': album,
+    }
+
+    return render(request, 'album-details.html', context)
 
 
 def edit_album(request, pk):
-    pass
+    album = Album.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = EditAlbumForm(request.POST, instance=album)
+        if form.is_valid():
+            form.save()
+            return redirect('show home')
+    else:
+        form = EditAlbumForm(instance=album)
+
+    context = {
+        'form': form,
+        'album': album,
+    }
+
+    return render(request, 'edit-album.html', context)
 
 
 def delete_album(request, pk):
-    pass
+    album = Album.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = DeleteAlbumForm(request.POST, instance=album)
+        if form.is_valid():
+            form.save()
+            return redirect('show home')
+    else:
+        form = DeleteAlbumForm(instance=album)
+
+    context = {
+        'form': form,
+        'album': album,
+    }
+
+    return render(request, 'delete-album.html', context)
+
+
+def create_profile(request):
+    if request.method == 'POST':
+        form = CreateProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show home')
+    else:
+        form = CreateProfileForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'home-no-profile.html', context)
 
 
 def show_profile_details(request):
+    profile = get_profile()
     albums_count = len(Album.objects.all())
+
     context = {
-        'profile': get_profile(),
+        'profile': profile,
         'albums_count': albums_count,
     }
 
@@ -51,8 +115,17 @@ def show_profile_details(request):
 
 
 def delete_profile(request):
-    return render(request, 'profile-delete.html')
+    profile = get_profile()
+    if request.method == 'POST':
+        form = DeleteProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('show home')
+    else:
+        form = DeleteProfileForm(instance=profile)
 
+    context = {
+        'form': form
+    }
 
-def create_profile(request):
-    return render(request, 'home-no-profile.html')
+    return render(request, 'profile-delete.html', context)

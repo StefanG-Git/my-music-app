@@ -8,7 +8,7 @@ urlpatterns = (
     path('album/details/<int:pk>/', show_album_details, name='show album details'),
     path('album/edit/<int:pk>/', edit_album, name='edit album'),
     path('album/delete/int:<pk>/', delete_album, name='delete album'),
+    path('profile/create/', create_profile, name='create profile'),
     path('profile/details/', show_profile_details, name='show profile details'),
     path('profile/delete/', delete_profile, name='delete profile'),
-    path('profile/create/', create_profile, name='create profile'),
 )

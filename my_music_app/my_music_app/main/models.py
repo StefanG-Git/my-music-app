@@ -6,7 +6,7 @@ class Profile(models.Model):
     USERNAME_MIN_LENGTH = 2
     USERNAME_MAX_LENGTH = 15
     USERNAME_PATTERN = r'^\w+$'
-    USERNAME_INVALID_MESSAGE = 'Ensure this value contains only letters, numbers, and underscore.'
+    USERNAME_ERROR_MESSAGE = 'Ensure this value contains only letters, numbers, and underscore.'
 
     AGE_MIN_VALUE = 0
 
@@ -14,7 +14,7 @@ class Profile(models.Model):
         max_length=USERNAME_MAX_LENGTH,
         validators=(
             MinLengthValidator(USERNAME_MIN_LENGTH),
-            RegexValidator(USERNAME_PATTERN, USERNAME_INVALID_MESSAGE),
+            RegexValidator(USERNAME_PATTERN, USERNAME_ERROR_MESSAGE),
         ),
     )
 

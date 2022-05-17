@@ -38,7 +38,7 @@ def add_album(request):
         'form': form
     }
 
-    return render(request, 'add-album.html', context)
+    return render(request, 'albums/add-album.html', context)
 
 
 def show_album_details(request, pk):
@@ -47,7 +47,7 @@ def show_album_details(request, pk):
         'album': album,
     }
 
-    return render(request, 'album-details.html', context)
+    return render(request, 'albums/album-details.html', context)
 
 
 def edit_album(request, pk):
@@ -65,7 +65,7 @@ def edit_album(request, pk):
         'album': album,
     }
 
-    return render(request, 'edit-album.html', context)
+    return render(request, 'albums/edit-album.html', context)
 
 
 def delete_album(request, pk):
@@ -83,7 +83,7 @@ def delete_album(request, pk):
         'album': album,
     }
 
-    return render(request, 'delete-album.html', context)
+    return render(request, 'albums/delete-album.html', context)
 
 
 def create_profile(request):
@@ -111,7 +111,7 @@ def show_profile_details(request):
         'albums_count': albums_count,
     }
 
-    return render(request, 'profile-details.html', context)
+    return render(request, 'profile/profile-details.html', context)
 
 
 def delete_profile(request):
@@ -128,4 +128,4 @@ def delete_profile(request):
         'form': form
     }
 
-    return render(request, 'profile-delete.html', context)
+    return render(request, 'profile/profile-delete.html', context)

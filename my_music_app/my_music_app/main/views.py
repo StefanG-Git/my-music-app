@@ -22,7 +22,7 @@ def show_home(request):
         'albums': Album.objects.all(),
     }
 
-    return render(request, 'home-with-profile.html', context)
+    return render(request, 'main/home-with-profile.html', context)
 
 
 def add_album(request):
@@ -99,7 +99,7 @@ def create_profile(request):
         'form': form
     }
 
-    return render(request, 'home-no-profile.html', context)
+    return render(request, 'main/home-no-profile.html', context)
 
 
 def show_profile_details(request):
